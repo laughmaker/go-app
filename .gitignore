@@ -1,10 +1,8 @@
 .idea/
 .DS_Store
 
-runtime
-runtime/**
-docs
-docs/**
-app
+/runtime
+/docs
+/app
 app.ini.local
 
