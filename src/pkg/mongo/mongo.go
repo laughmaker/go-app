@@ -12,7 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var Database *mongo.Database
+var DB *mongo.DB
 
 func Setup() (err error) {
 	var uri string
@@ -30,7 +30,7 @@ func Setup() (err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
 	err = client.Connect(ctx)
-	Database = client.Database(conf.Mongodb.Database)
+	DB = client.DB(conf.Mongodb.Name)
 	if err != nil {
 		fmt.Printf("client connect err:%v", err)
 		return err
@@ -39,7 +39,7 @@ func Setup() (err error) {
 }
 
 func InsertOne(name string, data interface{}) (id interface{}, err error) {
-	res, err := Database.Collection(name).InsertOne(context.Background(), data)
+	res, err := DB.Collection(name).InsertOne(context.Background(), data)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func InsertOne(name string, data interface{}) (id interface{}, err error) {
 }
 
 func One(name string, filter interface{}) (model interface{}, err error) {
-	err = Database.Collection(name).FindOne(context.Background(), filter).Decode(&model)
+	err = DB.Collection(name).FindOne(context.Background(), filter).Decode(&model)
 	if err != nil {
 		return nil, err
 	}
@@ -55,13 +55,13 @@ func One(name string, filter interface{}) (model interface{}, err error) {
 }
 
 func All(name string, filter interface{}) (list []interface{}, err error) {
-	cur, err := Database.Collection(name).Find(context.Background(), filter)
+	cur, err := DB.Collection(name).Find(context.Background(), filter)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer cur.Close(context.Background())
 
-	count, _ := Database.Collection(name).CountDocuments(context.Background(), filter)
+	count, _ := DB.Collection(name).CountDocuments(context.Background(), filter)
 	list = make([]interface{}, count)
 	for cur.Next(context.Background()) {
 		list = append(list, cur.Current)

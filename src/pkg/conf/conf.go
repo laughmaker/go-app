@@ -64,7 +64,7 @@ type RedisConf struct {
 }
 
 type MongodbConf struct {
-	Database string
+	Name     string
 	Host     string
 	Port     int
 	User     string
