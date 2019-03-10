@@ -1,0 +1,33 @@
+settings:
+  legacy:
+    force: false
+    interval: 0s
+server:
+  host: localhost
+  port: 8000
+  open: true
+schema:
+- name: app
+  path: .
+  commands: 
+    fmt:
+      status: true
+    install:
+      status: true
+      method: go build -o runtime/bin
+    run:
+      status: true
+      method: runtime/bin
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /src
+    scripts:
+      - type: after
+        output: true
+    ignored_paths:
+    - .git
+    - .realize
+    - vendor
+    - runtime
