@@ -4,7 +4,7 @@ import (
 	"app/src/pkg/app"
 	"app/src/pkg/conf"
 	"app/src/pkg/db"
-	"app/src/router"
+	"app/src/pkg/route"
 	"context"
 	"fmt"
 	"net/http"
@@ -30,7 +30,7 @@ func main() {
 }
 
 func run() {
-	gin := router.InitRouter()
+	gin := route.InitRoute()
 	server := &http.Server{
 		Addr:           fmt.Sprintf(":%d", conf.Server.HttpPort),
 		Handler:        gin,

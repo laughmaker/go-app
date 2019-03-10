@@ -55,6 +55,8 @@ github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/me
 github.com/gofrs/uuid v3.2.0+incompatible h1:y12jRkkFxsd7GpqdSZ+/KCs/fJbqpEXSGd4+jfEaewE=
 github.com/gofrs/uuid v3.2.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
 github.com/gogo/protobuf v1.1.1/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7atdtwQ=
+github.com/gohouse/converter v0.0.3 h1:xyM0XyhRQUsf2Y0lEABbOHvLDVjiRkjTxi+dza87M80=
+github.com/gohouse/converter v0.0.3/go.mod h1:Yb3eAs+8j4rYcnthK6iK9e/3HDZJ5C2PsYaugkeQR2I=
 github.com/golang/appengine v1.4.0 h1:E3VU6gGkryMDadWGAvAsq5M6gPKSpauNJMz3YUBd7/A=
 github.com/golang/appengine v1.4.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
 github.com/golang/crypto v0.0.0-20190228050851-31a38585487a h1:LS8AXXf8biINam8Lb+khnU6eN0IaT3YO7QR6qCTz4b0=

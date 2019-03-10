@@ -1,4 +1,4 @@
-package router
+package route
 
 import (
 	"github.com/laughmaker/go-pkg/conf"
@@ -12,7 +12,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-func InitRouter() *gin.Engine {
+func InitRoute() *gin.Engine {
 	engine := gin.New()
 
 	engine.Use(gin.Logger())
