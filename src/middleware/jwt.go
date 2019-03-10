@@ -30,7 +30,7 @@ func Jwt() gin.HandlerFunc {
 			}
 		}
 
-		resp := app.App{C: c}
+		resp := app.Resp{C: c}
 		if code != app.SUCCESS {
 			resp.Error(http.StatusUnauthorized)
 			c.Abort()

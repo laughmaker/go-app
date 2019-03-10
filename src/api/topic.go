@@ -1,6 +1,7 @@
 package api
 
 import (
+	"app/src/model"
 	"app/src/pkg/app"
 
 	"github.com/gin-gonic/gin"
@@ -13,15 +14,22 @@ import (
 // @Failure 500 {object} app.Response
 // @Router /shop/v1/topic/topics/{id} [get]
 func Topics(c *gin.Context) {
-	// page := app.NewPage(c)
-	// var topic model.Topic
-	// list, err := topic.Topics(&page)
+	page := app.NewPage(c)
+	var topic model.Topic
+	list, err := topic.Topics(&page)
 
 	resp := app.Resp{C: c}
-	// if err != nil {
-	// 	resp.Failed(app.FAILED)
-	// 	return
-	// }
+	if err != nil {
+		resp.Failed(app.FAILED)
+		return
+	}
 
-	resp.Model("ok")
+	resp.List(list, page)
+}
+
+func Save(c *gin.Context) {
+	var topic model.Topic
+	topic.Insert()
+	resp := app.Resp{C: c}
+	resp.Model(topic)
 }
