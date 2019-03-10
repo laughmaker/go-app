@@ -4,7 +4,7 @@ import (
 	"app/src/pkg/app"
 	"app/src/pkg/conf"
 	"app/src/pkg/db"
-	"app/src/pkg/route"
+	"app/src/route"
 	"context"
 	"fmt"
 	"net/http"
