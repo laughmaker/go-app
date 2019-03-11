@@ -1,15 +1,16 @@
 package middleware
 
 import (
-	"fmt"
+	"app/src/pkg/log"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Logger() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Next()
+		// 捕获panic异常
+		defer log.Try()
 
-		fmt.Println("logggggg")
+		c.Next()
 	}
 }

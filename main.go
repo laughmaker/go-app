@@ -3,14 +3,9 @@ package main
 import (
 	"app/src/pkg/app"
 	"app/src/pkg/conf"
-	"app/src/pkg/log"
 	"app/src/route"
-	"context"
 	"fmt"
 	"net/http"
-	"os"
-	"os/signal"
-	"time"
 )
 
 func init() {
@@ -24,7 +19,6 @@ func init() {
 // @license.name MIT
 // @license.url
 func main() {
-	defer log.Try()
 	run()
 
 	// db.Close()
@@ -39,29 +33,29 @@ func run() {
 		WriteTimeout:   conf.Server.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
+	server.ListenAndServe()
+	// go func() {
+	// 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+	// 		fmt.Println("listen: %s\n", err)
+	// 	}
+	// }()
 
-	go func() {
-		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			fmt.Println("listen: %s\n", err)
-		}
-	}()
+	// quit := make(chan os.Signal)
+	// signal.Notify(quit, os.Interrupt)
+	// <-quit
 
-	quit := make(chan os.Signal)
-	signal.Notify(quit, os.Interrupt)
-	<-quit
+	// fmt.Println("shutdown server...")
 
-	fmt.Println("shutdown server...")
+	// ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	// defer cancel()
+	// if err := server.Shutdown(ctx); err != nil {
+	// 	fmt.Printf("server shutdown:%s", err)
+	// }
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := server.Shutdown(ctx); err != nil {
-		fmt.Printf("server shutdown:%s", err)
-	}
+	// select {
+	// case <-ctx.Done():
+	// 	fmt.Println("timeout of 5 second!")
+	// }
 
-	select {
-	case <-ctx.Done():
-		fmt.Println("timeout of 5 second!")
-	}
-
-	fmt.Println("server exiting!!")
+	// fmt.Println("server exiting!!")
 }

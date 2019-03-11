@@ -2,7 +2,6 @@ package route
 
 import (
 	"app/src/middleware"
-
 	"app/src/pkg/conf"
 
 	_ "app/docs"
@@ -20,7 +19,7 @@ func InitRoute() *gin.Engine {
 	if conf.Server.RunMode == "release" {
 		engine.Use(gin.Logger())
 	}
-	engine.Use(gin.Recovery())
+	// engine.Use(gin.Recovery())
 	gin.SetMode(conf.Server.RunMode)
 
 	engine.Use(middleware.Logger())

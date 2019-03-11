@@ -24,6 +24,7 @@ type AppConf struct {
 	LogSaveName string
 	LogFileExt  string
 	TimeFormt   string
+	LogMail     string
 }
 
 type DatabaseConf struct {
