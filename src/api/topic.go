@@ -28,7 +28,7 @@ func Topics(c *gin.Context) {
 }
 
 func Save(c *gin.Context) {
-	var topic model.Topic
+	var topic *model.Topic
 	topic.Insert()
 	resp := app.Resp{C: c}
 	resp.Model(topic)

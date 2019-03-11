@@ -12,7 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var DB *mongo.DB
+var DB *mongo.Database
 
 func Setup() (err error) {
 	var uri string
@@ -30,7 +30,7 @@ func Setup() (err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
 	err = client.Connect(ctx)
-	DB = client.DB(conf.Mongodb.Name)
+	DB = client.Database(conf.Mongodb.Name)
 	if err != nil {
 		fmt.Printf("client connect err:%v", err)
 		return err

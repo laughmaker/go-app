@@ -3,7 +3,7 @@ package main
 import (
 	"app/src/pkg/app"
 	"app/src/pkg/conf"
-	"app/src/pkg/db"
+	"app/src/pkg/log"
 	"app/src/route"
 	"context"
 	"fmt"
@@ -24,9 +24,10 @@ func init() {
 // @license.name MIT
 // @license.url
 func main() {
+	defer log.Try()
 	run()
 
-	db.Close()
+	// db.Close()
 }
 
 func run() {
