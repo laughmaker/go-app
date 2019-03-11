@@ -47,9 +47,11 @@ export GO111MODULE=on
 ### 效率工具
 
 * 根据接口自动生成struct
-  https://github.com/galeone/rts
-  示例：`rts -server http://localhost:8000/topic/topics/sdf topic`
+  * 安装：https://github.com/galeone/rts
+  * 示例：
+  ```rts -server http://localhost:8000/topic/topics/sdf topic```
 
 * 根据表结构自动生成结构
-  github.com/gohouse/converter
-示例：`./table2struct.bin -file ../model/cat_diary.go -dsn root:123456@tcp(localhost:3306)/yirimao?charset=utf8mb4 -table cat_diary -tagKey gorm`
+  * 安装：github.com/gohouse/converter
+  * 示例：
+  ```./table2struct.bin -file ../model/cat_diary.go -dsn root:123456@tcp(localhost:3306)/yirimao?charset=utf8mb4 -table cat_diary -tagKey gorm```
