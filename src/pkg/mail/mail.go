@@ -22,7 +22,6 @@ func Send(to, subject, body, attach string) {
 	}
 
 	d := gomail.NewDialer(conf.Mail.Host, conf.Mail.Port, conf.Mail.User, conf.Mail.Password)
-	// d.TLSConf = &tls.Conf{InsecureSkipVerify: true}
 
 	if err := d.DialAndSend(m); err != nil {
 		fmt.Println(err)

@@ -31,24 +31,25 @@ func Try() {
 	f.WriteString(string(debug.Stack()))
 	f.WriteString("\r\n")
 
-	mail.Send(conf.App.LogMail, fmt.Sprintf("%v", errs), string(debug.Stack()), "")
+	mail.Send(conf.App.LogMail, fmt.Sprintf("%v", errs), formatStack(), "")
 }
 
 func formatStack() string {
-	stack := strings.Split(string(debug.Stack()), "	")
-	var str string
+	stack := strings.Split(string(debug.Stack()), "\n")
+	str := "<strong style=\"font-size:24px;\">TRACE</strong> <br>"
 	for idx, v := range stack {
-		v = strings.ReplaceAll(v, "\r\n", " ")
-
 		if idx == 0 {
-			str += v + "\n"
+			str += v + "<br>"
 			continue
 		}
 
 		if idx%2 == 0 {
-			str += v + " \n "
+			str += v + " </p> "
 		} else {
-			str += v + "  ->  "
+			str += "<p style=\"padding:1px; margin:1px;\">" + v
+			if idx < (len(stack) - 1) {
+				str += "  <strong style=\"font-size:16px;\">-></strong> "
+			}
 		}
 
 		if idx == (len(stack) - 1) {
