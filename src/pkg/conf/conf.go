@@ -84,7 +84,7 @@ var Mongodb = &MongodbConf{}
 
 func Setup() {
 	var err error
-	cfg, err = ini.Load("src/conf/app.ini", "src/conf/app.ini.local")
+	cfg, err = ini.Load("src/conf/app.ini", "src/conf/app.local.ini")
 	if err != nil {
 		fmt.Printf("fail to parse 'app.ini': %v", err)
 	}
