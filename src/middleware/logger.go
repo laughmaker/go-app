@@ -9,7 +9,7 @@ import (
 func Logger() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 捕获panic异常
-		defer log.Try()
+		defer log.Try(c)
 
 		c.Next()
 	}

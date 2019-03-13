@@ -33,6 +33,6 @@ func InitRoute() *gin.Engine {
 }
 
 func loadRoutes(gin *gin.Engine) {
-	gin.GET("/topic/topics/:id", api.Topics)
-	gin.GET("/topic/save", api.Save)
+	gin.POST("/topic/topics/:id", api.Topics)
+	gin.POST("/topic/save", api.Save)
 }
