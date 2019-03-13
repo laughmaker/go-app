@@ -10,8 +10,8 @@ import (
 // @Summary Get multiple topics
 // @Produce  json
 // @Param id path int true "ID"
-// @Success 200 {object} app.Response
-// @Failure 500 {object} app.Response
+// @Success 200 {object} app.Resp.Send
+// @Failure 500 {object} app.Resp.Send
 // @Router /shop/v1/topic/topics/{id} [get]
 func Topics(c *gin.Context) {
 	page := app.NewPage(c)
