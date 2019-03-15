@@ -35,12 +35,12 @@ func formatRequest(c *gin.Context) string {
 	params, _ := json.Marshal(c.Params)
 
 	body := "<strong style=\"font-size:24px;\">BASIC</strong> <br>"
-	body += "Method: " + c.Request.Method + "<br>"
-	body += "Params: " + string(params) + "<br>"
-	body += "RequestURI: " + c.Request.RequestURI + "<br>"
-	body += "Host: " + c.Request.Host + "<br>"
-	body += "ClientIp: " + c.ClientIP() + "<br>"
-	body += "RemoteAddr: " + c.Request.RemoteAddr + "<br>"
+	body += "method: " + c.Request.Method + "<br>"
+	body += "params: " + string(params) + "<br>"
+	body += "requestURI: " + c.Request.RequestURI + "<br>"
+	body += "host: " + c.Request.Host + "<br>"
+	body += "clientIp: " + c.ClientIP() + "<br>"
+	body += "remoteAddr: " + c.Request.RemoteAddr + "<br>"
 
 	body += "<strong style=\"font-size:24px;\">HEADER</strong> <br>"
 	body += string(header) + "<br>"

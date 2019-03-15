@@ -174,7 +174,7 @@ func (this *Request) Get() (*Response, error) {
 }
 
 func (this *Request) Post() (*Response, error) {
-	return this.AddFormHeader().Send(this.Url, http.MethodPost)
+	return this.Send(this.Url, http.MethodPost)
 }
 
 func (this *Request) Put() (*Response, error) {
