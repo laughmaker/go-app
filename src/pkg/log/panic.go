@@ -16,12 +16,12 @@ import (
 )
 
 func Try(c *gin.Context) {
-	fmt.Println("崩溃信息--------------------------")
-
 	errs := recover()
 	if errs == nil {
 		return
 	}
+
+	fmt.Println("崩溃信息--------------------------")
 
 	write2File(errs, c)
 
@@ -42,10 +42,10 @@ func formatRequest(c *gin.Context) string {
 	body += "clientIp: " + c.ClientIP() + "<br>"
 	body += "remoteAddr: " + c.Request.RemoteAddr + "<br>"
 
-	body += "<strong style=\"font-size:24px;\">HEADER</strong> <br>"
+	body += "<br><strong style=\"font-size:24px;\">HEADER</strong> <br>"
 	body += string(header) + "<br>"
 
-	body += "<strong style=\"font-size:24px;\">BODY</strong> <br>"
+	body += "<br><strong style=\"font-size:24px;\">BODY</strong> <br>"
 	body += string(requestBody) + "<br>"
 
 	return body
@@ -53,7 +53,7 @@ func formatRequest(c *gin.Context) string {
 
 func formatStack() string {
 	stack := strings.Split(string(debug.Stack()), "\n")
-	str := "<strong style=\"font-size:24px;\">TRACE</strong> <br>"
+	str := "<br><strong style=\"font-size:24px;\">TRACE</strong> <br>"
 	for idx, v := range stack {
 		if idx == 0 {
 			str += v + "<br>"
